@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenTask - Premium To-Do List</title>
+    <meta name="description" content="A minimalist, high-performance To-Do List for organized living.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header>
+            <h1 id="app-title">ZenTask</h1>
+            <p class="subtitle">Focus on what matters most.</p>
+        </header>
+
+        <section class="task-input-card glass">
+            <form id="task-form">
+                <input type="text" id="task-content" placeholder="What's on your mind?" required>
+                <div class="input-actions">
+                    <select id="task-priority">
+                        <option value="Low">Low Priority</option>
+                        <option value="Medium" selected>Medium Priority</option>
+                        <option value="High">High Priority</option>
+                    </select>
+                    <button type="submit" id="add-task-btn">Add Task</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </section>
+
+        <div id="loading-indicator" class="hidden">Updating...</div>
+
+        <ul id="task-list" class="task-list">
+            <!-- Tasks will be injected here via JavaScript -->
+        </ul>
+        
+        <footer>
+            <div class="stats">
+                <span id="remaining-count">0</span> tasks remaining
+            </div>
+            <div id="clear-completed" class="action-link">Clear Completed</div>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
